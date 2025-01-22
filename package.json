@@ -1,0 +1,19 @@
+{
+  "name": "end-2-end-playwright",
+  "version": "1.0.0",
+  "description": "codebase for the purposes of learning and experimenting with the end-2-end testing frame work \"playwright\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test && npx playwright show-report"
+  },
+  "author": "Shane Fast",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.7"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

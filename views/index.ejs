@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playwright Demo App</title>
+</head>
+<body>
+  <h1>Playwright Demo Application</h1>
+
+  <% if (loggedIn) { %>
+    <form action="/logout" method="POST">
+      <button type="submit">Logout</button>
+    </form>
+    <h2>Add an Item</h2>
+    <form action="/add-item" method="POST">
+      <input type="text" name="name" placeholder="Item Name" required>
+      <select name="category" required>
+        <option value="Category A">Category A</option>
+        <option value="Category B">Category B</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+
+    <h2>Item List</h2>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+      <% items.forEach(item => { %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= item.name %></td>
+          <td><%= item.category %></td>
+          <td>
+            <form action="/delete-item/<%= item.id %>" method="POST" style="display: inline;">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  <% } else { %>
+    <h2>Login</h2>
+    <% if (error) { %>
+      <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+  <% } %>
+</body>
+</html>
