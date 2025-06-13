@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';await page.locator('body').click();
 
 test('test Alert', async ({ page }) => {
   await page.goto('http://www.uitestingplayground.com/');
